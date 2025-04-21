@@ -1,5 +1,5 @@
 --
--- M3L - Magayaga Mathematical Library (v0.9.2 / July 23, 2024)
+-- M3L - Magayaga Mathematical Library (v0.9.2 / April 30, 2025)
 -- Copyright (c) 2024-2025 Cyril John Magayaga (cjmagayaga957@gmail.com, cyrilmagayaga@proton.me)
 --
 

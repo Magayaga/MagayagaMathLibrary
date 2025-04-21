@@ -1,5 +1,5 @@
 #
-# M3L - Magayaga Mathematical Library (v0.9.2 / July 23, 2024)
+# M3L - Magayaga Mathematical Library (v0.9.2 / April 30, 2025)
 # Copyright (c) 2024 Cyril John Magayaga (cjmagayaga957@gmail.com, cyrilmagayaga@proton.me)
 #
 
@@ -8,6 +8,7 @@ import random
 class M3L:
     PI = 3.141592653589793
     E = 2.718281828459045
+    TAU = 2 * 3.141592653589793
 
     @staticmethod
     def positive(x):

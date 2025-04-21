@@ -4,6 +4,7 @@
 (* Mathematical constants *)
 val pi = 3.141592653589793
 val e = 2.718281828459045
+val tau = 6.283185307179586
 
 (* List addition *)
 fun ladd xs = List.foldl (fn (x, acc) => x + acc) 0 xs
@@ -52,6 +53,9 @@ fun divide x =
 (* Square number *)
 fun sq x = x * x
 
+(* Cube number*)
+fun cb x = x * x * x
+
 (* Square root *)
 fun sqrt n = 
     let
@@ -65,8 +69,18 @@ fun sqrt n =
         !x
     end
 
-(* Power function *)
-fun pow (base, exponent) = Real.pow (Real.fromInt base, Real.fromInt exponent)
+(* Cube root *)
+fun cbrt n =
+    let
+        val x = ref (Real.fromInt n)
+        val n_real = Real.fromInt n
+        val epsilon = 0.000001
+    in
+        while Real.abs(!x * !x - n_real) > epsilon do (
+            x := (!x + n_real / !x) / 3.0
+        );
+        !x
+    end
 
 (* Factorial *)
 fun factorial n = let val i = ref n and acc = ref 1 in

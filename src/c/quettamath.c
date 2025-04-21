@@ -225,3 +225,61 @@ double qm_degrees(double radians) {
 double qm_radians(double degrees) {
     return degrees * (qm_constants.PI / 180.0);
 }
+
+// Angle Normalization
+static double qm_norm_angle(double x) {
+    double two_pi = qm_constants.TAU;
+    double k = qm_floor(x / two_pi);
+    double y = x - two_pi * k;
+    if (y > qm_constants.PI)
+        y -= two_pi;
+    return y;
+}
+
+// Sine
+double qm_sin(double x) {
+    x = qm_norm_angle(x);
+    double term = x;
+    double sum  = term;
+    for (int n = 1; n <= 9; ++n) {
+        term *= - (x * x) / ((2.0*n) * (2.0*n + 1.0));
+        sum  += term;
+    }
+    return sum;
+}
+
+// Cosine
+double qm_cos(double x) {
+    x = qm_norm_angle(x);
+    double term = 1.0;
+    double sum  = term;
+    for (int n = 1; n <= 9; ++n) {
+        term *= - (x * x) / ((2.0*n - 1.0) * (2.0*n));
+        sum  += term;
+    }
+    return sum;
+}
+
+// Tangent
+double qm_tan(double x) {
+    double c = qm_cos(x);
+    if (c == 0.0) {
+        return 0.0/0.0;
+    }
+    return qm_sin(x) / c;
+}
+
+// Cosecant
+double qm_csc(double x) {
+    return 1 / qm_sin(x);
+}
+
+// Secant
+double qm_sec(double x) {
+    return 1 / qm_cos(x);
+}
+
+// Cotangent
+double qm_cot(double x) {
+    return 1 / qm_cot(x);
+}
